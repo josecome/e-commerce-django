@@ -18,12 +18,34 @@
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-
-
-
-        
-
+        {% for row in prodcat %}
+        <div class="col">
+            <div class="card shadow-sm">
+               <text x="80%" y="80%" fill="#eceeef" dy=".3em">
+                  <a href="">
+                      <img src=""
+                          alt="{{ row.category }}"
+                          title="{{ row.category }}"
+                      />
+                  </a>
+              </text>
+              <div class="card-body">
+                <p class="card-text">{{ row.description }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                  <i class="bi bi-pencil-square" style="padding-right: 16px;" data-toggle="modal" data-target="#exampleModal"
+                        onclick="setDataInForm('{{ row.category }}', '{{ row.description }}', '{{ row.image_link }}', '{{ row.id }}')"  
+                        title="Update Category Information"></i>
+                  <a href="" class="bi bi-gear" style="color: gray" title="Manage the list of Products"></a>
+                    <!--<button type="button" class="btn btn-sm btn-outline-secondary">kk</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">qq</button>-->
+                  </div>
+                  <small class="text-muted">_</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="setDataInForm('', '', '', '')">
 Add New Category
 </button>
