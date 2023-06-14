@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
+{% load static %}
 <main>
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
@@ -23,7 +24,7 @@
             <div class="card shadow-sm">
                <text x="80%" y="80%" fill="#eceeef" dy=".3em">
                   <a href="">
-                      <img src=""
+                      <img src="{% static row.image.url %}"  
                           alt="{{ row.category }}"
                           title="{{ row.category }}"
                       />
