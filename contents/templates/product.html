@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Product{% endblock %}
+{% block content %}
+{% load static %}
+<main>
+    <a href="/product_form?pg={{ product }}" style="float: left; padding-right: 4px;">
+        <button type="button" class="btn btn-link">Add new</button>
+    </a>
+    <table class="table table-striped">
+    <thead class="">
+    <tr>
+        <th>ID</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>User ID</th>
+        <th>Image</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for prod in products %}
+    <tr>
+        <td>{{ prod.id }}</td>
+        <td>{{ prod.product }}</td>
+        <td>{{ prod.price }}</td>
+        <td>{{ prod.description }}</td>
+        <td>{{ prod.category }}</td>
+        <td>{{ prod.user_id }}</td>
+        <td><img src="{{ prod.image.url }}" style="width: 60px; height: 40px;" /></td>
+        <td>
+            <a href="/product_form?t=edit&id={{ prod.id }}&pg={{ product }}" style="float: left; padding-right: 4px;">
+                <button type="button" class="btn btn-primary">Edit</button>
+            </a>
+            <form action="/delete/">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {{ endfor }}
+    </tbody>
+</table>
+</main>
+{% endblock content %}
