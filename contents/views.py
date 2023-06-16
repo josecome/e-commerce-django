@@ -52,3 +52,8 @@ def ProductsForSaleList(request, category):
     return httpResponse(json_data, content_type="application/json")
 
 
+def Products(request):
+    data = Product.objects.all()
+    return render(request, 'home.html', {'products': data})  
+
+
