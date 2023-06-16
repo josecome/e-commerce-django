@@ -23,5 +23,6 @@ urlpatterns = [
     path('', views.Home, name="home"), 
     path('admin/', admin.site.urls),
     path('add_category/', views.Create_Category, name="add_category"),
+    path('products_for_sale', views.Products_for_Sale, name="products_for_sale"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

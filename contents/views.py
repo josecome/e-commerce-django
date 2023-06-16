@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse as httpResponse
 from django.shortcuts import render, redirect 
+from django.core import serializers
 from .models import ProdCategory
 from .forms import ProdCategoryForm
 from django.contrib import messages
@@ -32,4 +33,16 @@ def Create_Category(request):
     else:
         messages.info(request, _('Request not valid')) 
         return redirect("/")
+    
+
+def Products_for_Sale(request):
+    return render(request, 'products_for_sale.html')
+
+
+def ProductsForSaleList(request, category):
+    data = Product.objects.filter(category=category)
+    json_data = serializers.serialize('json', data)
+
+    return httpResponse(json_data, content_type="application/json")
+
 
