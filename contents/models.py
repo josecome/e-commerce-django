@@ -6,8 +6,8 @@ class ProdCategory(models.Model):
     id = models.AutoField(primary_key=True)
     category = models.CharField(max_length=16)
     description = models.CharField(max_length=60)   
-    image = models.ImageField(upload_to = 'prodcategory-img/', null=True)
-    date_created = models.DateField()
+    image = models.ImageField(upload_to = 'images/', null=True)
+    date_created = models.DateField(null=True)
     date_updated = models.DateField(null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 

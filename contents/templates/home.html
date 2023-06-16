@@ -24,7 +24,7 @@
             <div class="card shadow-sm">
                <text x="80%" y="80%" fill="#eceeef" dy=".3em">
                   <a href="">
-                      <img src="{% static row.image.url %}"  
+                      <img src="{{ row.image.url }}"  
                           alt="{{ row.category }}"
                           title="{{ row.category }}"
                       />
@@ -66,47 +66,12 @@ Add New Category
         </button>
       </div>
       <div class="modal-body">
-      <form class="" method="post" action="/add_category" enctype="multipart/form-data" >
-
-    <div class="">
-<br>
-    <div class="mb-3">
-    <label class=""></label>
-    <div class="">
-    <h3>Details</h3>
-    </div>
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Id:</label>
-    <div class="">
-        <span id="tid"></span><input type="text" name="id" id="txtid" value="" style="display: none;"/>
-    </div>
-  </div>
-    <div class="mb-3">
-    <label class="form-label">Category:</label>
-    <div class="">
-        <input type="text" name="category" id="category" required maxlength="20" value=""/>
-    </div>
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Description:</label>
-    <div class="">
-        <input type="text" name="description" id="description" required maxlength="100" value="" />
-    </div>
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Image Upload:</label>
-    <div class="">
-        <input type="hidden" name="image_link" id="image_link" value="" />
-        <input type="file" name="image" id="id_file" />
-    </div>
-  </div>
-  <div class="mb-3">
-    <label class=""></label>
-    <button type="submit" class="btn btn-success">Save</button>
-  </div>
-    </div>
-</form>
+      <form class="" method="post" action="/add_category/" enctype="multipart/form-data" >
+        {% csrf_token %}
+        {{ form.as_p }}  
+        <input type="hidden" name="user_id" value="1" />
+        <button type="submit">Create</button>  
+      </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

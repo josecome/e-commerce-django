@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Result{% endblock %}
+{% block content %}
+{% load static %}
+
+{% if form %}  
+<h3>Succesfully uploaded : {{ form.category }}, {{ form.description}}</h3>  
+<img src="{{ form.image.url}}" style="max-height:300px">  
+{% endif %}  
+
+{% endblock content %}
