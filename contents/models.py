@@ -20,6 +20,7 @@ class Product(models.Model):
     product = models.CharField(max_length=16)
     description = models.CharField(max_length=60)   
     category = models.CharField(max_length=16)
+    price = models.DecimalField(max_digits=5, decimal_places=2, default=200.00)
     image = models.ImageField(upload_to = 'images/', null=True)
     date_created = models.DateField(null=True)
     date_updated = models.DateField(null=True)
