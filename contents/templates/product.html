@@ -26,7 +26,7 @@
         <td>{{ prod.product }}</td>
         <td>{{ prod.price }}</td>
         <td>{{ prod.description }}</td>
-        <td>{{ prod.category }}</td>
+        <td>{{ prod.category.category }}</td>
         <td>{{ prod.user_id }}</td>
         <td><img src="{{ prod.image.url }}" style="width: 60px; height: 40px;" /></td>
         <td>
@@ -38,7 +38,7 @@
             </form>
         </td>
     </tr>
-    {{ endfor }}
+    {% endfor %}
     </tbody>
 </table>
 </main>
