@@ -23,6 +23,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to = 'images/', null=True)
     date_created = models.DateField(null=True)
     date_updated = models.DateField(null=True)
+    category = models.ForeignKey(ProdCategory, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:  

@@ -36,12 +36,17 @@ def Create_Category(request):
         return redirect("/")
     
 
-def Products_for_Sale(request):
-    return render(request, 'products_for_sale.html')
+def Products_for_Sale(request, category):
+    return render(request, 'products_for_sale.html', {'product' : category})
 
 
 def ProductsForSaleList(request, category):
-    data = Product.objects.filter(category=category)
+    print('Start...')
+    print(category)
+    category_id = int(ProdCategory.objects.get(category=category).pk)        
+    print(category_id)
+    data = Product.objects.filter(category_id=category_id)
+    print(str(data))
     json_data = serializers.serialize('json', data)
 
     return httpResponse(json_data, content_type="application/json")
