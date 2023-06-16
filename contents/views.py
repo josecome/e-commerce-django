@@ -53,9 +53,8 @@ def ProductsForSaleList(request, category):
 
 
 def Products(request):
-    #data = Product.objects.all()
     data = Product.objects.prefetch_related('category').all()
-    print(data)
+
     return render(request, 'product.html', {'products': data})  
 
 
