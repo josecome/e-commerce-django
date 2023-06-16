@@ -54,6 +54,6 @@ def ProductsForSaleList(request, category):
 
 def Products(request):
     data = Product.objects.all()
-    return render(request, 'home.html', {'products': data})  
+    return render(request, 'product.html', {'products': data})  
 
 
