@@ -12,4 +12,19 @@ class ProdCategory(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:  
-        db_table = "prod_category"      
+        db_table = "prod_category"    
+
+
+class Product(models.Model):
+    id = models.AutoField(primary_key=True)
+    product = models.CharField(max_length=16)
+    description = models.CharField(max_length=60)   
+    category = models.CharField(max_length=16)
+    image = models.ImageField(upload_to = 'images/', null=True)
+    date_created = models.DateField(null=True)
+    date_updated = models.DateField(null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:  
+        db_table = "product"    
+        

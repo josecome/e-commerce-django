@@ -3,6 +3,7 @@ from django.http import HttpResponse as httpResponse
 from django.shortcuts import render, redirect 
 from django.core import serializers
 from .models import ProdCategory
+from .models import Product
 from .forms import ProdCategoryForm
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
