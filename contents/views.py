@@ -52,9 +52,10 @@ def ProductsForSaleList(request, category):
     return httpResponse(json_data, content_type="application/json")
 
 
-def Products(request):
-    data = Product.objects.prefetch_related('category').all()
+def Products(request, category):
+    category_id = int(ProdCategory.objects.get(category=category).pk)    
+    data = Product.objects.filter(category_id=category_id).prefetch_related('category').all()
 
-    return render(request, 'product.html', {'products': data})  
+    return render(request, 'product.html', {'category': category, 'products': data})  
 
 

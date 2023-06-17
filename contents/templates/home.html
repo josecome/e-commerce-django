@@ -37,7 +37,7 @@
                   <i class="bi bi-pencil-square" style="padding-right: 16px;" data-toggle="modal" data-target="#exampleModal"
                         onclick="setDataInForm('{{ row.category }}', '{{ row.description }}', '{{ row.image_link }}', '{{ row.id }}')"  
                         title="Update Category Information"></i>
-                  <a href="/products/" class="bi bi-gear" style="color: gray" title="Manage the list of Products"></a>
+                  <a href="/products/{{ row.category }}" class="bi bi-gear" style="color: gray" title="Manage the list of Products"></a>
                     <!--<button type="button" class="btn btn-sm btn-outline-secondary">kk</button>
                     <button type="button" class="btn btn-sm btn-outline-secondary">qq</button>-->
                   </div>
