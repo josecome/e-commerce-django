@@ -59,3 +59,21 @@ def Products(request, category):
     return render(request, 'product.html', {'category': category, 'products': data})  
 
 
+def ProductForm(request):    
+    category = request.GET['pg']
+    t = '_'
+    try:
+        t = request.GET['t']
+    except:
+        t = '_'    
+
+    if t is not None and t == "edit":
+        id = int(request.GET['id'])
+        data = Product.objects.filter(id=id)
+        return render(request, 'product_form.html', {'category': category, 'product': data})  
+    
+    return render(request, 'product_form.html', {'category': category})  
+    
+
+    
+

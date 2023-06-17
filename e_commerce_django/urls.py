@@ -26,5 +26,6 @@ urlpatterns = [
     path('products_for_sale/<str:category>', views.Products_for_Sale, name="products_for_sale"),
     path('products_for_sale_list/<str:category>', views.ProductsForSaleList, name="products_for_sale_list"),
     path('products/<str:category>', views.Products, name="products"),
+    path('product_form/', views.ProductForm, name="product_form"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
