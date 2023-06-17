@@ -61,7 +61,7 @@ def Products(request, category):
 
 def ProductForm(request):    
     category = request.GET['pg']
-    t = '_'
+    t = None
     try:
         t = request.GET['t']
     except:
@@ -69,7 +69,8 @@ def ProductForm(request):
 
     if t is not None and t == "edit":
         id = int(request.GET['id'])
-        data = Product.objects.filter(id=id)
+        data = Product.objects.get(id=id)
+        print(data)
         return render(request, 'product_form.html', {'category': category, 'product': data})  
     
     return render(request, 'product_form.html', {'category': category})  

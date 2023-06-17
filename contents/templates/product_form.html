@@ -17,20 +17,20 @@
     <div class="mb-3">
     <label class="form-label">Product:</label>
     <div class="">
-    <input type="hidden" name="id" id="id" required maxlength="20" value=""/>
-        <input type="text" name="product" id="id_cid" required maxlength="20" value=""/>
+    <input type="hidden" name="id" id="id" required maxlength="20" value="{{ product.id }}"/>
+        <input type="text" name="product" id="id_cid" required maxlength="20" value="{{ product.product }}"/>
     </div>
   </div>
   <div class="mb-3">
     <label class="form-label">Description:</label>
     <div class="">
-        <input type="text" name="description" id="id_name" required maxlength="100" value="" />
+        <input type="text" name="description" id="id_name" required maxlength="100" value="{{ product.description }}" />
     </div>
   </div>
   <div class="mb-3">
     <label class="form-label">Price:</label>
     <div class="">
-        <input type="number" name="price" id="id_price" required maxlength="100" value="" />
+        <input type="number" name="price" id="id_price" required maxlength="100" value="{{ product.price }}" />
     </div>
   </div>
   <div class="mb-3">
@@ -38,6 +38,7 @@
     <div class="">
         <!--<input type="hidden" name="image_link" value="" />
         <input type="file" name="image" id="id_file" />-->
+        <img src="{% static product.image %}" />
     </div>
   </div>
     <input type="hidden" name="category" value="{{ category }}" />
