@@ -107,21 +107,21 @@
                         class="col"
                         style="border-bottom: 2px solid #BFC9CA; padding: 6px;">
                         <td>
-                            [[ product_item_in_cart.product ]]
+                            [[ product_item_in_cart.fields.article ]]
                         </td>
                         <td>
-                            [[ format_to_money_style(product_item_in_cart.price) ]]
+                            [[ format_to_money_style(product_item_in_cart.fields.price) ]]
                         </td>
                         <td>
                             <input type='number'
                                 style='width: 60px'
                                 :disabled="purchase_status !== 'Order'"
                                 v-model = "Qnty_of_Products_in_Cart[index]"
-                                v-on:change="ChangeProductQnty(product_item_in_cart.id, index)"
+                                v-on:change="ChangeProductQnty(product_item_in_cart.pk, index)"
                             />
                         </td>
                         <td>
-                            <i @click="Product_in_cart(product_item_in_cart.id, 'r')" class="bi bi-x-octagon-fill" style="float: right; padding-left: 6px; color: #E74C3C;"></i>
+                            <i @click="Product_in_cart(product_item_in_cart.pk, 'r')" class="bi bi-x-octagon-fill" style="float: right; padding-left: 6px; color: #E74C3C;"></i>
                         </td>
                     </tr>
                     <tr>
@@ -188,7 +188,9 @@
         }
     },
     async mounted() {
-        const rs = await axios.get('/productincart/{{ this.user_id }}') //get data
+        const rs = await axios.get('/productincart/1{{ this.user_id }}') //get data
+        console.log('Start...')
+        console.log(rs.data)
         rs_response = rs.data;
         this.Products_in_Cart = rs_response
         this.updateCart();

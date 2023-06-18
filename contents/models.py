@@ -34,6 +34,7 @@ class Product(models.Model):
 class Cart(models.Model):
     id = models.AutoField(primary_key=True)
     article = models.CharField(max_length=16, default='No Product')
+    price = models.DecimalField(max_digits=5, decimal_places=2, default=200.00)
     totalprice = models.DecimalField(max_digits=5, decimal_places=2, default=200.00)
     description = models.CharField(max_length=60)  
     purchased = models.BooleanField()
