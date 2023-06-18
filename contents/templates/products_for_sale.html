@@ -197,7 +197,7 @@
         const res = await axios.get('/listofcategories') //get data
         console.log('z')
         console.log(res.data)
-        this.category_options = res.data.map((ctgry) => ctgry.category);
+        this.category_options = res.data.map((ctgry) => ctgry.fields.category);
     },
     watch: {
         Products_in_Cart(newVal, oldVal) {

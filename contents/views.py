@@ -80,6 +80,13 @@ def ProductInCart(request, user_id):
     json_data = serializers.serialize('json', data)
 
     return httpResponse(json_data, content_type="application/json")
+
+
+def ListOfCategories(request):
+    data = ProdCategory.objects.all()
+    json_data = serializers.serialize('json', data)
+
+    return httpResponse(json_data, content_type="application/json")
     
 
     
