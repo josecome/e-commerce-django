@@ -28,5 +28,21 @@ class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:  
-        db_table = "product"    
-        
+        db_table = "product"
+
+
+class Cart(models.Model):
+    id = models.AutoField(primary_key=True)
+    article = models.CharField(max_length=16, default='No Product')
+    totalprice = models.DecimalField(max_digits=5, decimal_places=2, default=200.00)
+    description = models.CharField(max_length=60)  
+    purchased = models.BooleanField()
+    category = models.CharField(max_length=16)
+    date_created = models.DateField(null=True)
+    date_updated = models.DateField(null=True)
+    category = models.ForeignKey(ProdCategory, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:  
+        db_table = "cart"

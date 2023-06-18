@@ -2,8 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse as httpResponse
 from django.shortcuts import render, redirect 
 from django.core import serializers
-from .models import ProdCategory
-from .models import Product
+from .models import ProdCategory, Product, Cart
 from .forms import ProdCategoryForm
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
@@ -74,6 +73,13 @@ def ProductForm(request):
         return render(request, 'product_form.html', {'category': category, 'product': data})  
     
     return render(request, 'product_form.html', {'category': category})  
+
+
+def ProductInCart(request, user_id):
+    data = Cart.objects.filter(user_id=user_id)
+    json_data = serializers.serialize('json', data)
+
+    return httpResponse(json_data, content_type="application/json")
     
 
     
