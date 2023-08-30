@@ -89,7 +89,7 @@
     <div class="modal-dialog">
 
       <!-- Modal content-->
-      <div class="modal-content" style="width: 100%;">
+      <div class="modal-content" style="width: 600px;">
         <div class="modal-header" style="width: 100%;">
           <h4 class="modal-title" style="float: left;"><strong>Products in Cart</strong></h4>
           <button type="button" class="close" data-dismiss="modal" style="float: right;">&times;</button>
@@ -98,7 +98,7 @@
           <table>
                 <thead>
                     <tr>
-                        <th>Product</th><th>Price</th><th>Qnty</th><th>Remove</th>
+                        <th>Product</th><th>Price</th><th>Qnty</th><th>Total (Item)</th><th>Remove</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -116,20 +116,23 @@
                             <input type='number'
                                 style='width: 60px'
                                 :disabled="purchase_status !== 'Order'"
-                                v-model = "Qnty_of_Products_in_Cart[index]"
+                                v-model = "product_item_in_cart.fields.qnty"
                                 v-on:change="ChangeProductQnty(product_item_in_cart.pk, index)"
                             />
+                        </td>
+                        <td>
+                            [[ format_to_money_style(product_item_in_cart.fields.price * product_item_in_cart.fields.qnty) ]]
                         </td>
                         <td>
                             <i @click="Product_in_cart(product_item_in_cart.pk, 'r')" class="bi bi-x-octagon-fill" style="float: right; padding-left: 6px; color: #E74C3C;"></i>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="3">
                             <strong>Total</strong>
                         </td>
                         <td>
-                        <strong>[[ total_price_to_pay ]]</strong>
+                        <strong>[[ format_to_money_style(total_price_to_pay) ]]</strong>
                         </td>
                         <td>
 
@@ -201,10 +204,9 @@
     },
     watch: {
         Products_in_Cart(newVal, oldVal) {
-            this.total_price_to_pay = this.format_to_money_style(this.Products_in_Cart.reduce(
-                (currentTotal, item) => {
-                return Number(item.price) + Number(currentTotal)
-                }, 0))
+            var price_qnty = this.Products_in_Cart.map((i)=> i.fields.price * i.fields.qnty )
+            console.log('mmmmmm: ' + price_qnty)
+            this.total_price_to_pay = price_qnty.reduce((total, num) => total + num);
         },
         async selected_category(newVal, oldVal) {
             if (confirm(`Show ${ this.selected_category } products`) == true) {
