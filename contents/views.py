@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse as httpResponse
-from django.shortcuts import render, redirect 
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required, permission_required
+from django.views.decorators.http import require_http_methods
 from django.core import serializers
 from .models import ProdCategory, Product, Cart
 from .forms import ProdCategoryForm
@@ -87,6 +89,12 @@ def ListOfCategories(request):
     json_data = serializers.serialize('json', data)
 
     return httpResponse(json_data, content_type="application/json")
+
+
+# @login_required(login_url='login.html')    
+def Dashboard(request):
+    return render(request, 'dashboard.html') 
+
     
 
     
