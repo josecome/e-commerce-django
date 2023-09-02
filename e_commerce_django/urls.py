@@ -30,6 +30,6 @@ urlpatterns = [
     path('productincart/<int:user_id>', views.ProductInCart, name="productincart/"),
     path('listofcategories/', views.ListOfCategories, name="listofcategories"),
     path('dashboard/', views.Dashboard, name="dashboard"),
-    path('/dashboard_data', views.Dashboard_data, name="dashboard_data"),
+    path('dashboard_data/', views.Dashboard_data, name="dashboard_data"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
