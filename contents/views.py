@@ -95,6 +95,10 @@ def ListOfCategories(request):
 def Dashboard(request):
     return render(request, 'dashboard.html') 
 
+
+def Dashboard_data(request):
+    json_data = {'key': 'value'}
+    return httpResponse(json_data, content_type="application/json")
     
 
     
