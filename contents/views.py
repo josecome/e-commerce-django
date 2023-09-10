@@ -14,7 +14,7 @@ from .utils import (
     send_forgotten_username_email, 
     send_activation_change_email,
 )
-
+from .decorators import admin_required
 # Create your views here.
 def Home(request):     
     form = ProdCategoryForm()  
@@ -104,6 +104,14 @@ def Dashboard(request):
 def Dashboard_data(request):
     json_data = {'key': 'value'}
     return httpResponse(json_data, content_type="application/json")
+
+
+@admin_required
+def disable_project_by_admin():
+    # Require admin
+    pass
+
+
     
 
     
