@@ -8,7 +8,12 @@ from .models import ProdCategory, Product, Cart
 from .forms import ProdCategoryForm
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
-
+from .utils import (
+    send_activation_email, 
+    send_reset_password_email, 
+    send_forgotten_username_email, 
+    send_activation_change_email,
+)
 
 # Create your views here.
 def Home(request):     
