@@ -8,6 +8,7 @@ from .models import ProdCategory, Product, Cart
 from .forms import ProdCategoryForm
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
+from django.core.paginator import Paginator
 from .utils import (
     send_activation_email, 
     send_reset_password_email, 
@@ -15,6 +16,7 @@ from .utils import (
     send_activation_change_email,
 )
 from .decorators import admin_required
+
 # Create your views here.
 def Home(request):     
     form = ProdCategoryForm()  
@@ -60,9 +62,11 @@ def ProductsForSaleList(request, category):
 
 def Products(request, category):
     category_id = int(ProdCategory.objects.get(category=category).pk)    
-    data = Product.objects.filter(category_id=category_id).prefetch_related('category').all()
+    data = Paginator(Product.objects.filter(category_id=category_id).prefetch_related('category').all(), 8)
+    # page_number = request.GET.get("page")
+    data_obj = data.get_page(1)
 
-    return render(request, 'product.html', {'category': category, 'products': data})  
+    return render(request, 'product.html', {'category': category, 'products': data_obj})  
 
 
 def ProductForm(request):    
