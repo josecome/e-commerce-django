@@ -17,7 +17,7 @@ Products in Chart
 
 Add or edit product
 
-<img src="contents/list_of_products.jpg">
+<img src="contents/static/list_of_products.jpg">
 
 Dashboar for Managers
 
