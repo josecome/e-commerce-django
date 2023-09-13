@@ -9,6 +9,7 @@ from .forms import ProdCategoryForm
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from django.core.paginator import Paginator
+from django.views.decorators.cache import cache_page
 from .utils import (
     send_activation_email, 
     send_reset_password_email, 
@@ -48,6 +49,7 @@ def Products_for_Sale(request, category):
     return render(request, 'products_for_sale.html', {'product' : category})
 
 
+@cache_page(60 * 15)
 def ProductsForSaleList(request, category):
     print('Start...')
     print(category)
