@@ -15,6 +15,10 @@ Products in Chart
 
 <img src="contents/static/cart.jpg">
 
+Add or edit product
+
+<img src="contents/list_of_products.jpg">
+
 Dashboar for Managers
 
 <img src="contents/static/dashboard_chart.jpg">
