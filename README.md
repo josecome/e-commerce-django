@@ -25,7 +25,13 @@ Dashboar for Managers
 
 ## To run the project
 
-Type in commandline
+Type and run in commandline the follow command to install required packages
+
+### `pip install -r requirements.txt`
+
+Type and run in commandline
+
+### `py manage.py migrate`
 
 ### `py manage.py runserver`
 
