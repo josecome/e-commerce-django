@@ -4,9 +4,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class SharedFields(models.Model):
-    description = models.CharField(max_length=60)   
-    date_created = models.DateField(null=True)
-    date_updated = models.DateField(null=True)
+    description = models.CharField(max_length=60)
 
     class Meta:
         abstract = True
@@ -15,8 +13,11 @@ class SharedFields(models.Model):
 class ProdCategory(SharedFields):
     id = models.AutoField(primary_key=True)
     category = models.CharField(max_length=16)
+    link = models.SlugField(default="link", null=False)
     image = models.ImageField(upload_to = 'images/', null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_created = models.DateField(null=True)
+    date_updated = models.DateField(null=True)
 
     class Meta:  
         db_table = "prod_category"    
@@ -24,11 +25,14 @@ class ProdCategory(SharedFields):
 
 class Product(SharedFields):
     id = models.AutoField(primary_key=True)
-    product = models.CharField(max_length=16) 
+    product = models.CharField(max_length=16)
+    link = models.SlugField(default="link", null=False)
     price = models.DecimalField(max_digits=5, decimal_places=2, default=200.00)
     image = models.ImageField(upload_to = 'images/', null=True)
     category = models.ForeignKey(ProdCategory, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_created = models.DateField(null=True)
+    date_updated = models.DateField(null=True)
 
     class Meta:  
         db_table = "product"
@@ -45,6 +49,8 @@ class Cart(SharedFields):
     category = models.ForeignKey(ProdCategory, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_created = models.DateField(null=True)
+    date_updated = models.DateField(null=True)
 
     class Meta:  
         db_table = "cart"
