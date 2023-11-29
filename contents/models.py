@@ -25,7 +25,6 @@ class ProdCategory(SharedFields):
 class Product(SharedFields):
     id = models.AutoField(primary_key=True)
     product = models.CharField(max_length=16) 
-    category = models.CharField(max_length=16)
     price = models.DecimalField(max_digits=5, decimal_places=2, default=200.00)
     image = models.ImageField(upload_to = 'images/', null=True)
     category = models.ForeignKey(ProdCategory, on_delete=models.CASCADE)
