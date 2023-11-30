@@ -2,6 +2,7 @@ from rest_framework import serializers
 from contents.models import (
     ProdCategory,
     Product,
+    Cart,
 )
 
 class ProdCategorySerializer(serializers.ModelSerializer):
@@ -22,3 +23,9 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ["id", "product", "price", "image", "category", "username", "first_name", "last_name", "date_created"]
+
+
+class CartSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cart
+        fields = "__all__"
