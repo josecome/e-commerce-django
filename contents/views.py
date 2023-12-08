@@ -17,6 +17,7 @@ from .utils import (
     send_activation_change_email,
 )
 from .decorators import admin_required
+from django.conf import settings
 
 # Create your views here.
 def Home(request):     
@@ -33,15 +34,15 @@ def Create_Category(request):
             ctgry = form.save(commit=False)
             ctgry.user_id = 1
             ctgry.save() 
-            messages.success(request, _('Category successfull created'))
+            messages.success(request, _(settings.SUCCESS_INSERT))
             form_instance= form.instance  
             return render(request, 'result_page.html', {'form': form_instance}) 
         else:
-            messages.info(request, _('Error creating Category'))
+            messages.info(request, _(settings.ERROR_INSERT_CATEGORY))
             return render(request, 'result_page.html') 
                         
     else:
-        messages.info(request, _('Request not valid')) 
+        messages.info(request, _(settings.REQUEST_NOT_VALID)) 
         return redirect("/")
     
 
