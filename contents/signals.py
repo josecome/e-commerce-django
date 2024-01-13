@@ -9,18 +9,18 @@ from contents.models import (
 
 
 @receiver(post_save, sender=ProdCategory)
-def user_created(sender, instance, created, **kwargs):
+def category_created(sender, instance, created, **kwargs):
    if created:
       print('New Category of Products added:', instance.category)
 
 
 @receiver(post_save, sender=Product)
-def user_created(sender, instance, created, **kwargs):
+def product_created(sender, instance, created, **kwargs):
    if created:
       print('New Product created:', instance.product)
 
 
 @receiver(post_save, sender=Cart)
-def user_created(sender, instance, created, **kwargs):
+def cart_created(sender, instance, created, **kwargs):
    if created:
       print('New Product in Cart added:', instance.article)
